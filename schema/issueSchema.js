@@ -29,4 +29,4 @@ const issueSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Issue", issueSchema);
+module.exports = issueSchema;
