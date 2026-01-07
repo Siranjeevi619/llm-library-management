@@ -1,6 +1,11 @@
 const express = require("express");
-const book = require("../schema/bookSchema");
+const book = require("../model/Book");
 
-const createBook = async () => {
-  await book.save;
+const createBook = async (req, res) => {
+  try {
+    const response = await book.create(req.body);
+    res.status(201).json()
+  } catch (error) {
+
+  }
 };
