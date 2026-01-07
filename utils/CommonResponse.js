@@ -5,3 +5,5 @@ class CommonResponse {
     this.status = status;
   }
 }
+
+modules.exports = CommonResponse;
