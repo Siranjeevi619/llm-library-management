@@ -1,11 +1,12 @@
 const express = require("express");
+const { issueBook } = require("../controller/issueController");
 
 const app = express.Router();
 
-app.post("/issues");
+app.post("/book-issues", issueBook);
 
-app.get("/issues");
+app.get("/issues", getAllIssuedBooks);
 
-app.put("/issues/:issueId");
+app.put("/issues/:issueId", returnBook);
 
-app.get("/issues/:getUserId");
+app.get("/issues/:getUserId", getIssuedBooksByUser);
