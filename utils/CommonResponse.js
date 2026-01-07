@@ -9,4 +9,4 @@ class CommonResponse {
   }
 }
 
-modules.exports = CommonResponse;
+module.exports = CommonResponse;

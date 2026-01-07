@@ -27,6 +27,41 @@ const createUser = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  try {
+    const { userEmail } = req.body;
+
+    const response = await User.findOne({ userEmail });
+    if (!response) {
+      return res
+        .status(401)
+        .json(
+          new CommonResponse("Invalid User", null, ResponseStatus.REJECTED)
+        );
+    }
+
+    return res
+      .status(200)
+      .json(
+        new CommonResponse(
+          "Login Successful",
+          response,
+          ResponseStatus.ACCEPTED
+        )
+      );
+  } catch (error) {
+    return res
+      .status(500)
+      .json(
+        new CommonResponse(
+          "INTERNAL SERVER ERROR",
+          error.message,
+          ResponseStatus.FAILED
+        )
+      );
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const response = await User.find();
@@ -84,6 +119,42 @@ const getUserById = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const response = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    if (!response) {
+      return res
+        .status(404)
+        .json(
+          new CommonResponse("User Not Found", null, ResponseStatus.REJECTED)
+        );
+    }
+
+    return res
+      .status(200)
+      .json(
+        new CommonResponse(
+          "User Updated Successfully",
+          response,
+          ResponseStatus.ACCEPTED
+        )
+      );
+  } catch (error) {
+    return res
+      .status(500)
+      .json(
+        new CommonResponse(
+          "INTERNAL SERVER ERROR",
+          error.message,
+          ResponseStatus.FAILED
+        )
+      );
+  }
+};
+
 const deleteUser = async (req, res) => {
   try {
     const response = await User.findByIdAndDelete(req.params.id);
@@ -118,7 +189,9 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   createUser,
+  loginUser,
   getAllUsers,
   getUserById,
+  updateUser,
   deleteUser,
 };

@@ -1,12 +1,19 @@
 const express = require("express");
-const { issueBook } = require("../controller/issueController");
+const {
+  issueBook,
+  getAllIssuedBooks,
+  returnBook,
+  getIssuedBooksByUser,
+} = require("../controller/issueController");
 
-const app = express.Router();
+const router = express.Router();
 
-app.post("/book-issues", issueBook);
+router.post("/book-issues", issueBook);
 
-app.get("/issues", getAllIssuedBooks);
+router.get("/issues", getAllIssuedBooks);
 
-app.put("/issues/:issueId", returnBook);
+router.put("/issues/:issueId", returnBook);
 
-app.get("/issues/:getUserId", getIssuedBooksByUser);
+router.get("/issues/:getUserId", getIssuedBooksByUser);
+
+module.exports = router;

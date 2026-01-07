@@ -6,6 +6,7 @@ const CommonResponse = require("../utils/CommonResponse");
 const createBook = async (req, res) => {
   try {
     const response = await Book.create(req.body);
+
     return res
       .status(201)
       .json(
@@ -16,6 +17,7 @@ const createBook = async (req, res) => {
         )
       );
   } catch (error) {
+    console.log(error);
     return res
       .status(500)
       .json(

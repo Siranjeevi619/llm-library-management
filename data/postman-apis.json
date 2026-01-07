@@ -1,0 +1,192 @@
+{
+  "info": {
+    "_postman_id": "b7b8a9c1-1234-4abc-9def-56789abcd123",
+    "name": "Library Management APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Book APIs",
+      "item": [
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "http://localhost:5000/api/books/create",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "books", "create"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookTitle\": \"Clean Code\",\n  \"bookDescription\": \"A Handbook of Agile Software Craftsmanship\",\n  \"bookAuthor\": \"Robert C. Martin\",\n  \"bookGenre\": \"Programming\",\n  \"bookTotalCopies\": 5,\n  \"bookAvailableCopies\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/books/get-book-all",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "books", "get-book-all"]
+            }
+          }
+        },
+        {
+          "name": "Get Book By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/books/get-book-id/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "books", "get-book-id", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "http://localhost:5000/api/books/update-book/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "books", "update-book", "{{bookId}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookAvailableCopies\": 3\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:5000/api/books/delete-book/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "books", "delete-book", "{{bookId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User APIs",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "http://localhost:5000/api/users/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "users", "register"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userName\": \"John\",\n  \"userEmail\": \"john@gmail.com\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Users",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/users/get-user",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "users", "get-user"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Issue APIs",
+      "item": [
+        {
+          "name": "Issue Book",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "http://localhost:5000/api/issues/book-issues",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "issues", "book-issues"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookId\": \"{{bookId}}\",\n  \"userId\": \"{{userId}}\",\n  \"dueDate\": \"2026-01-20\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get All Issued Books",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/issues/issues",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "issues", "issues"]
+            }
+          }
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "http://localhost:5000/api/issues/issues/{{issueId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "issues", "issues", "{{issueId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Issued Books By User",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:5000/api/issues/issues/{{userId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "issues", "issues", "{{userId}}"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "bookId", "value": "" },
+    { "key": "userId", "value": "" },
+    { "key": "issueId", "value": "" }
+  ]
+}

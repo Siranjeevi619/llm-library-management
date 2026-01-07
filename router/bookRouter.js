@@ -7,16 +7,16 @@ const {
   deleteBook,
 } = require("../controller/bookController");
 
-const app = express.Router();
+const router = express.Router();
 
-app.post("/create", createBook);
+router.post("/create", createBook);
 
-app.get("get-book-all", getBook);
+router.get("get-book-all", getBook);
 
-app.get("get-book-id/:id", getBookById);
+router.get("get-book-id/:id", getBookById);
 
-app.put("/update-book/:id", updateBook);
+router.put("/update-book/:id", updateBook);
 
-app.delete("/delete-book/:id", deleteBook);
+router.delete("/delete-book/:id", deleteBook);
 
-module.exports = app;
+module.exports = router;
