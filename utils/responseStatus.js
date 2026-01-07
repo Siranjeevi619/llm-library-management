@@ -3,5 +3,6 @@ const ResponseStatus = Object.freeze({
   REJECTED: "REJECTED",
   FAILED: "FAILED",
   PENDING: "PENDING",
-  
 });
+
+module.exports = ResponseStatus;
