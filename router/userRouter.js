@@ -1,18 +1,9 @@
 const express = require("express");
+const { createUser, loginUser } = require("../controller/userController");
+
 const router = express.Router();
 
-const {
-  createBook,
-  getBook,
-  getBookById,
-  updateBook,
-  deleteBook,
-} = require("../controller/bookController");
-
-router.post("/create", createBook);
-router.get("/get-book-all", getBook);
-router.get("/get-book-id/:id", getBookById);
-router.put("/update-book/:id", updateBook);
-router.delete("/delete-book/:id", deleteBook);
+router.post("/register", createUser);
+router.post("/login", loginUser);
 
 module.exports = router;

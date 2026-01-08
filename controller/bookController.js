@@ -58,6 +58,7 @@ const getBook = async (req, res) => {
 const getBookById = async (req, res) => {
   try {
     const response = await Book.findById(req.params.id);
+
     if (!response) {
       return res
         .status(404)
@@ -65,16 +66,18 @@ const getBookById = async (req, res) => {
           new CommonResponse("Book Not Found", null, ResponseStatus.REJECTED)
         );
     }
+
     return res
       .status(200)
       .json(
         new CommonResponse(
           "Retrieved Book Successfully",
           response,
-          ResponseStatus.ACCEPTED
+          ResponseStatus.SUCCESS
         )
       );
   } catch (error) {
+    console.log(error);
     return res
       .status(500)
       .json(
@@ -137,7 +140,7 @@ const deleteBook = async (req, res) => {
         new CommonResponse(
           "Book Deleted Successfully",
           response,
-          ResponseStatus.ACCEPTED
+          ResponseStatus.SUCCESS
         )
       );
   } catch (error) {
